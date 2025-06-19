@@ -11,13 +11,12 @@ const App = () => {
   useEffect(() => {
     const tg = window.Telegram?.WebApp;
     if (tg) {
-      tg.ready(); // Инициализация Telegram Web App
+      tg.ready();
       const initData = tg.initDataUnsafe || {};
       setUser(initData.user || null);
       setRole(initData.user?.id % 2 === 0 ? 'teacher' : 'student');
     } else {
       console.error('Telegram WebApp is not available');
-      // Опционально: задайте тестовые данные для отладки
       setUser({ id: 123, first_name: 'Test User' });
       setRole('student');
     }
